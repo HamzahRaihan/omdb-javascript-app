@@ -111,7 +111,7 @@ function getMovies(keyword) {
       if (response.Response === 'True') {
         return response.Search;
       } else {
-        showNotFound();
+        showNotFound(keyword);
       }
     });
 }
@@ -128,9 +128,9 @@ function showDetail(m) {
   modalBody.innerHTML = movieDetail;
 }
 
-function showNotFound() {
+function showNotFound(keyword) {
   const movieContainer = document.querySelector('.movie-container');
-  movieContainer.innerHTML = notFound();
+  movieContainer.innerHTML = notFound(keyword);
 }
 
 function updateMovies(movies) {
@@ -140,10 +140,9 @@ function updateMovies(movies) {
   movieContainer.innerHTML = cards;
 }
 
-function notFound() {
-  const inputKeyword = document.querySelector('.input-keyword');
+function notFound(keyword) {
   return `<div class="col-md-4">
-    <h1>There is no movie called ${inputKeyword.value}</h1>
+    <h1>There is no movie called ${keyword}</h1>
   </div>`;
 }
 
